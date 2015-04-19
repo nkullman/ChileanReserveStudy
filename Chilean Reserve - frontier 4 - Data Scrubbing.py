@@ -18,7 +18,7 @@
 # 
 # Commence data manipulation...
 
-# In[329]:
+# In[334]:
 
 import pandas
 import numpy
@@ -28,19 +28,19 @@ from pandas import *
 from pylab import *
 
 
-# In[330]:
+# In[335]:
 
 # read in and save solution data to dataframe
-reserveSolns = read_csv('ADP_20150414_192212/FrontierSolutions_SolnYearID.csv')
+reserveSolns = read_csv('ADP_20150414_192212/FrontierSolutions_All_SolnYearID.csv')
 
 
-# In[331]:
+# In[336]:
 
 # Strip leading spaces from column names
 reserveSolns = reserveSolns.rename(columns=lambda x: x.strip())
 
 
-# In[332]:
+# In[337]:
 
 # Stands are 'pivoted' across the table (col for each stand)
 # Here we unpivot them, creating column for stand and prescription. This will require a merge.
@@ -60,16 +60,16 @@ meltedReserveSolns = merge(left, right,
                            how = 'outer')
 
 
-# In[333]:
+# In[338]:
 
 # Convert prescription column vals to int
 meltedReserveSolns["Prescription"] = meltedReserveSolns["Prescription"].apply(int)
 
 
-# In[328]:
+# In[339]:
 
 # Export to CSV for data viz with Tableau
-meltedReserveSolns.to_csv('ReserveSolutions_Frontier4_InteriorPts.csv')
+meltedReserveSolns.to_csv('ReserveSolutions_Frontier4_AllPts.csv')
 
 
 # We've finished what we set out to accomplish: learn some Python/pandas and clean a dataset for further analysis through visualization.
